@@ -1,0 +1,12 @@
+{
+  "pages": {
+    "facebook-pixel": {
+      "path": "/_v/facebook-pixel"
+    }
+  },
+  "extensions": {
+    "facebook-pixel": {
+      "component": "index"
+    }
+  }
+}

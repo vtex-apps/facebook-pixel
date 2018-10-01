@@ -1,0 +1,24 @@
+{
+  "vendor": "vtex",
+  "name": "facebook-pixel",
+  "version": "0.1.0",
+  "title": "Facebook Pixel",
+  "description": "Facebook Pixel",
+  "defaultLocale": "pt-BR",
+  "builders": {
+    "pages": "0.x",
+    "react": "2.x"
+  },
+  "mustUpdateAt": "2019-10-01",
+  "categories": [],
+  "registries": [
+    "smartcheckout"
+  ],
+  "dependencies": {
+    "vtex.store": "1.x"
+  },
+  "settingsSchema": {},
+  "scripts": {
+    "postreleasy": "vtex publish --verbose"
+  }
+}
