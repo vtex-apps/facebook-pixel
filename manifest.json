@@ -17,7 +17,17 @@
   "dependencies": {
     "vtex.store": "1.x"
   },
-  "settingsSchema": {},
+  "settingsSchema": {
+    "title": "Facebook Pixel",
+    "type": "object",
+    "properties": {
+      "pixelId": {
+        "type": "string",
+        "title": "Pixel ID",
+        "description": "Enter your facebook app id"
+      }
+    }
+  },
   "scripts": {
     "postreleasy": "vtex publish --verbose"
   }
