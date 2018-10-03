@@ -1,6 +1,4 @@
-/* eslint-disable camelcase */
-
-export function formatSearchResultProducts(products) {
+export function formatSearchResultProducts(products: any[]) {
   return {
     content_ids: products.map(product => product.id),
     contents: products.map(product => ({

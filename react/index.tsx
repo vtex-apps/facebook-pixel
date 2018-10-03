@@ -1,49 +1,69 @@
-/* global fbq */
-/* eslint-disable camelcase */
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { Helmet, withRuntimeContext } from 'render'
 import { Pixel } from 'vtex.store/PixelContext'
 
-import { formatSearchResultProducts } from './utils'
 import { fbjs, noScript } from './scripts/fbjs'
+import { formatSearchResultProducts } from './utils/formatHelper'
 
 const APP_LOCATOR = 'vtex.facebook-pixel'
 
-class FacebookPixel extends Component {
-  static propTypes = {
-    subscribe: PropTypes.func,
+interface Props {
+  subscribe: (s: any) => () => void
+  runtime: {
+    workspace: string
+    account: string
+    culture: {
+      currency: string
+    }
+  }
+}
+
+/**
+ * Component that encapsulates the communication
+ * with the Facebook Pixel API, and listens for the
+ * events emitted by the store through the Pixel HOC.
+ */
+class FacebookPixel extends Component<Props> {
+  public static propTypes = {
     runtime: PropTypes.shape({
-      workspace: PropTypes.string,
       account: PropTypes.string,
       culture: PropTypes.shape({
         currency: PropTypes.string,
       }),
+      workspace: PropTypes.string,
     }),
+    subscribe: PropTypes.func,
   }
 
-  static contextTypes = {
+  public static contextTypes = {
     getSettings: PropTypes.func.isRequired,
   }
 
-  constructor(props) {
+  public departmentView = this.trackCategoryPage('department')
+
+  public categoryView = this.trackCategoryPage('category')
+
+  private unsubscribe: () => void
+
+  constructor(props: Props) {
     super(props)
     this.unsubscribe = props.subscribe(this)
   }
 
-  shouldComponentUpdate() {
+  public shouldComponentUpdate() {
     // the component should only be rendered once
     return false
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     if (this.unsubscribe) {
       this.unsubscribe()
     }
   }
 
   get pixelId() {
-    const { pixelId } = this.context.getSettings(APP_LOCATOR) || {}
+    const { pixelId } = this.context.getSettings(APP_LOCATOR) || { pixelId: undefined }
 
     return pixelId
   }
@@ -52,7 +72,7 @@ class FacebookPixel extends Component {
     return this.props.runtime.culture.currency
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     if (!this.pixelId) {
       const { runtime: { workspace, account } } = this.props
       console.warn(
@@ -61,36 +81,24 @@ class FacebookPixel extends Component {
     }
   }
 
-  trackCategoryPage = page => data => {
-    fbq('track', 'ViewContent', {
-      ...formatSearchResultProducts(data.products),
-      content_type: 'product_group',
-      content_category: page,
-      currency: this.currency,
-    })
-  }
-
-  departmentView = this.trackCategoryPage('department')
-  categoryView = this.trackCategoryPage('category')
-
-  internalSiteSearchView = data => {
+  public internalSiteSearchView = (data: any) => {
     fbq('track', 'Search', formatSearchResultProducts(data.products))
   }
 
-  productView = data => {
+  public productView = (data: any) => {
     const { product: { name, category, id, price } } = data
 
     fbq('track', 'ViewContent', {
+      content_category: category,
       content_ids: [id],
       content_name: name,
       content_type: 'product',
-      value: parseFloat(price),
-      content_category: category,
       currency: this.currency,
+      value: parseFloat(price),
     })
   }
 
-  render() {
+  public render() {
     const pixelId = this.pixelId
 
     if (!pixelId) {
@@ -98,8 +106,8 @@ class FacebookPixel extends Component {
     }
 
     const scripts = [{
-      type: 'application/javascript',
       innerHTML: fbjs(pixelId),
+      type: 'application/javascript',
     }]
     const noScripts = [{
       id: 'fbjs_frame',
@@ -107,6 +115,17 @@ class FacebookPixel extends Component {
     }]
 
     return <Helmet script={scripts} noscript={noScripts} />
+  }
+
+  private trackCategoryPage(page: string) {
+    return (data: any) => {
+      fbq('track', 'ViewContent', {
+        ...formatSearchResultProducts(data.products),
+        content_category: page,
+        content_type: 'product_group',
+        currency: this.currency,
+      })
+    }
   }
 }
 
