@@ -40,10 +40,6 @@ class FacebookPixel extends Component<Props> {
     getSettings: PropTypes.func.isRequired,
   }
 
-  public departmentView = this.trackCategoryPage('department')
-
-  public categoryView = this.trackCategoryPage('category')
-
   private unsubscribe: () => void
 
   constructor(props: Props) {
@@ -81,6 +77,23 @@ class FacebookPixel extends Component<Props> {
     }
   }
 
+  public trackCategoryPage(page: string) {
+    return (data: any) => {
+      fbq('track', 'ViewContent', {
+        ...formatSearchResultProducts(data.products),
+        content_category: page,
+        content_type: 'product_group',
+        currency: this.currency,
+      })
+    }
+  }
+
+  /* tslint:disable member-ordering */
+  public departmentView = this.trackCategoryPage('department')
+
+  public categoryView = this.trackCategoryPage('category')
+  /* tslint:enable member-ordering */
+
   public internalSiteSearchView = (data: any) => {
     fbq('track', 'Search', formatSearchResultProducts(data.products))
   }
@@ -115,17 +128,6 @@ class FacebookPixel extends Component<Props> {
     }]
 
     return <Helmet script={scripts} noscript={noScripts} />
-  }
-
-  private trackCategoryPage(page: string) {
-    return (data: any) => {
-      fbq('track', 'ViewContent', {
-        ...formatSearchResultProducts(data.products),
-        content_category: page,
-        content_type: 'product_group',
-        currency: this.currency,
-      })
-    }
   }
 }
 
