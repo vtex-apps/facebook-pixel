@@ -56,7 +56,7 @@ class FacebookPixel extends Component {
     if (!this.pixelId) {
       const { runtime: { workspace, account } } = this.props
       console.warn(
-        `No pixel id is defined. Take a look at https://${workspace}--${account}.myvtex.com/admin/apps/`
+        `Warning: No pixel id is defined. To setup the app, take a look at https://${workspace}--${account}.myvtex.com/admin/apps/`
       )
     }
   }
