@@ -4,7 +4,7 @@ import { Helmet, withRuntimeContext } from 'render'
 import { Pixel } from 'vtex.store/PixelContext'
 
 import { fbjs, noScript } from './scripts/fbjs'
-import { formatSearchResultProducts } from './utils/formatHelper'
+import { formatSearchResultProducts, getProductPrice } from './utils/formatHelper'
 
 const APP_LOCATOR = 'vtex.facebook-pixel'
 
@@ -99,15 +99,15 @@ class FacebookPixel extends Component<Props> {
   }
 
   public productView = (data: any) => {
-    const { product: { name, category, id, price } } = data
+    const { product: { productName, productId } } = data
 
     fbq('track', 'ViewContent', {
-      content_category: category,
-      content_ids: [id],
+      content_category: 'product',
+      content_ids: [productId],
       content_name: name,
       content_type: 'product',
       currency: this.currency,
-      value: parseFloat(price),
+      value: getProductPrice(data.product),
     })
   }
 
