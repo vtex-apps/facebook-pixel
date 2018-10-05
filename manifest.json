@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "facebook-pixel",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "title": "Facebook Pixel",
   "description": "Facebook Pixel",
   "defaultLocale": "pt-BR",
