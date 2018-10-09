@@ -48,7 +48,7 @@ class FacebookPixel extends Component<Props> {
   }
 
   public track = (eventName: string, data: any) => {
-    if (!fbq) {
+    if (typeof fbq === 'undefined') {
       return
     }
 
