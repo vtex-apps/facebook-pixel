@@ -1,11 +1,11 @@
 {
   "pages": {
-    "facebook-pixel": {
-      "path": "/_v/facebook-pixel"
+    "fbq": {
+      "path": "/_v/fbq"
     }
   },
   "extensions": {
-    "facebook-pixel": {
+    "store/pixel/fbq": {
       "component": "index"
     }
   }
