@@ -14,6 +14,13 @@
   "registries": [
     "smartcheckout"
   ],
+  "billingOptions": {
+    "termsURL": "",
+    "support": {
+      "url": "https://support.vtex.com/hc/requests"
+    },
+    "free": true
+  },
   "dependencies": {
     "vtex.store": "1.x"
   },
