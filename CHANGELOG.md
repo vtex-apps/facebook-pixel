@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2018-10-18
+### Added
+- Add icon and description of the app.
+- Make this app pluggable with any IO store.
+
 ## [0.1.1] - 2018-10-18
 ### Fixed
 - Fix error when no pixel ID is defined.

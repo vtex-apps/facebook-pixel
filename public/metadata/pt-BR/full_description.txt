@@ -1,0 +1,11 @@
+#### Facebook Pixel
+#### App de rastreamento das atividades dos visitantes de sua loja. Ferramenta usada para avaliar a eficiência de seus anúncios.
+
+Quando você instalar esta app, você terá as principais funcionalidades abaixo: 
+
+- Integração da sua loja VTEX ao Facebook Analytics.
+- Uma nova forma de analisar seu público.
+
+Para ver todas as funcionalidades que estamos trabalhando [acesse o changelog](https://github.com/vtex-apps/facebook-pixel/blob/master/CHANGELOG.md)
+
+Você pode ler mais informações sobre a Store App [no README do Github.](https://github.com/vtex-apps/facebook-pixel/blob/master/README.md)
