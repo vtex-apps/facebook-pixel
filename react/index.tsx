@@ -47,6 +47,14 @@ class FacebookPixel extends Component<Props> {
     this.unsubscribe = props.subscribe(this)
   }
 
+  public track = (eventName: string, data: any) => {
+    if (typeof fbq === 'undefined') {
+      return
+    }
+
+    fbq('track', eventName, data)
+  }
+
   public shouldComponentUpdate() {
     // the component should only be rendered once
     return false
@@ -79,7 +87,7 @@ class FacebookPixel extends Component<Props> {
 
   public trackCategoryPage(page: string) {
     return (data: any) => {
-      fbq('track', 'ViewContent', {
+      this.track('ViewContent', {
         ...formatSearchResultProducts(data.products),
         content_category: page,
         content_type: 'product_group',
@@ -95,13 +103,13 @@ class FacebookPixel extends Component<Props> {
   /* tslint:enable member-ordering */
 
   public internalSiteSearchView = (data: any) => {
-    fbq('track', 'Search', formatSearchResultProducts(data.products))
+    this.track('Search', formatSearchResultProducts(data.products))
   }
 
   public productView = (data: any) => {
     const { product: { productName, productId } } = data
 
-    fbq('track', 'ViewContent', {
+    this.track('ViewContent', {
       content_category: 'product',
       content_ids: [productId],
       content_name: name,

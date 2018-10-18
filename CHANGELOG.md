@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2018-10-18
+### Fixed
+- Fix error when no pixel ID is defined.
+
 ## [0.1.0] - 2018-10-05
 ### Added
 - MVP of `Facebook Pixel`.
