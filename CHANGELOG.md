@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2018-10-19
+
 ## [1.0.0] - 2018-10-18
 ### Added
 - Add icon and description of the app.
