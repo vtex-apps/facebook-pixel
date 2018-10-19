@@ -6,7 +6,7 @@ export function getProductPrice(product: any) {
 
 export function formatSearchResultProducts(products: any[]) {
   return {
-    content_ids: products.map(product => product.id),
+    content_ids: products.map(product => product.productId),
     contents: products.map(product => {
       const quantity = product.items.reduce((acc: number, sku: any) => {
         const sellersQuantity = sku.sellers.reduce((sellerAcc: number, seller: any) => (

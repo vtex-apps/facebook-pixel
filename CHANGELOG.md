@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2018-10-19
+### Fixed
+- Fix `content_ids` field in search, department and category pages.
+
 ## [1.0.1] - 2018-10-19
 
 ## [1.0.0] - 2018-10-18
