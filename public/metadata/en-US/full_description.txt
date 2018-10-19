@@ -1,11 +1,14 @@
-#### Facebook Pixel
-#### App for tracking the activities of visitors to your store. Tool used to evaluate the effectiveness of your ads.
+## About
 
-When you install the app, you will have the following features:
+Facebook Pixel is an app for tracking the activities of visitors to your ecommerce. Tool used to evaluate the effectiveness of your ads.
+To see all the releases, [access the changelog](https://github.com/vtex-apps/facebook-pixel/blob/master/CHANGELOG.md)
+
+## Features 
 
 - Integration of your VTEX store with Facebook Analytics.
 - A new way to analyze your audience.
 
-To see all the features that we are working on [access the changelog](https://github.com/vtex-apps/facebook-pixel/blob/master/CHANGELOG.md)
+## How to configure
 
-Learn more about the Store App [on the Github README.](https://github.com/vtex-apps/facebook-pixel/blob/master/README.md)
+The required configuration will be to add the Facebook App ID into your account. In the Admin, go to **Apps -> Facebook Pixel** and add the ID in the available field.
+Learn more about the app [on the Github README.](https://github.com/vtex-apps/facebook-pixel/blob/master/README.md)

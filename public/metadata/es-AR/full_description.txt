@@ -1,11 +1,14 @@
-#### Facebook Pixel
-#### App de seguimiento de las actividades de los visitantes de su tienda. Herramienta utilizada para evaluar la eficiencia de sus anuncios.
+## Sobre
 
-Al instalar la aplicación, ya tiene las siguientes características:
+Facebook Píxel es una aplicación para el seguimiento de las actividades de los visitantes a su comercio electrónico. Herramienta utilizada para evaluar la eficiencia de sus anuncios.
+Para ver todos los lanzamientos, [acesse o changelog](https://github.com/vtex-apps/facebook-pixel/blob/master/CHANGELOG.md)
+
+## Funcionalidades
 
 - Integración de su tienda VTEX a Facebook Analytics.
 - Una nueva forma de analizar su público.
 
-Para ver todas las funciones en las que estamos trabajando [acceda al _changelog_.](https://github.com/vtex-apps/facebook-pixel/blob/master/CHANGELOG.md)
+## Cómo configurar 
 
-Obtenga más información acerca de Store [en el Github readme.](https://github.com/vtex-apps/facebook-pixel/blob/master/README.md)
+Sólo la configuración necesaria será agregar el Facebook App ID en su cuenta. En el Admin, acceda a Apps -> Facebook píxel y añada el ID en el campo disponible.
+Obtenga más información acerca de app [en el Github readme.](https://github.com/vtex-apps/facebook-pixel/blob/master/README.md)
