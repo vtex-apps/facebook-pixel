@@ -5,5 +5,8 @@
     }
   },
   "extensions": {
+    "fbq": {
+      "component": "index"
+    }
   }
 }

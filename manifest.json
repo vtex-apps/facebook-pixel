@@ -28,10 +28,10 @@
     "title": "Facebook Pixel",
     "type": "object",
     "properties": {
-      "pixelId": {
-        "type": "string",
-        "title": "Pixel ID",
-        "description": "Enter your facebook app id"
+      "pixelDependencies": {
+        "title": "Pixel base code",
+        "description": "You can get this configuration from the facebook pixel documentation at https://developers.facebook.com/docs/facebook-pixel/implementation#base-code",
+        "type": "string"
       }
     }
   },
