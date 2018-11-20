@@ -1,6 +1,7 @@
 import { formatSearchResultProducts, getProductPrice } from './utils/formatHelper'
 
-const currency = __RUNTIME__.culture.currency
+// TODO: get actual currency
+const currency = 'BRL'
 
 const trackCategoryPage = (page: string, e: Event) =>
   fbq('track', 'ViewContent', {
