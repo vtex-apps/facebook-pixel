@@ -1,14 +1,16 @@
 import { formatSearchResultProducts, getProductPrice } from './utils/formatHelper'
 
-// TODO: get actual currency
-const currency = 'BRL'
+import pixelScript from './scripts/fbq'
+
+// tslint:disable-next-line no-eval
+eval(pixelScript(window.__SETTINGS__.pixelId))
 
 const trackCategoryPage = (page: string, e: Event) =>
   fbq('track', 'ViewContent', {
     ...formatSearchResultProducts(e.data.products),
     content_category: page,
     content_type: 'product_group',
-    currency,
+    currency: e.data.currency,
   })
 
 window.addEventListener('message', e => {
@@ -33,7 +35,7 @@ window.addEventListener('message', e => {
         content_ids: [productId],
         content_name: name,
         content_type: 'product',
-        currency,
+        currency: e.data.currency,
         value: getProductPrice(e.data.product),
       })
       break
