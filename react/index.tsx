@@ -2,6 +2,12 @@ import { formatSearchResultProducts, getProductPrice } from './utils/formatHelpe
 
 import pixelScript from './scripts/fbq'
 
+const pixelId = window.__SETTINGS__.pixelId
+
+if (!pixelId) {
+  throw new Error('Warning: No FB Pixel ID is defined. To setup the app, take a look at your admin')
+}
+
 // tslint:disable-next-line no-eval
 eval(pixelScript(window.__SETTINGS__.pixelId))
 
