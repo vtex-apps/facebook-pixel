@@ -7,7 +7,8 @@
   "extensions": {
     "store/pixel/fbq": {
       "component": "index",
-      "shouldRender": false
+      "shouldRender": false,
+      "ssr": false
     }
   }
 }
