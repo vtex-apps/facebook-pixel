@@ -29,7 +29,7 @@
     "type": "object",
     "properties": {
       "pixelId": {
-        "title": "Pixel ID",
+        "title": "Facebook Pixel ID",
         "description": "Enter your facebook app ID",
         "type": "string"
       }
