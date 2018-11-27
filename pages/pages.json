@@ -6,7 +6,8 @@
   },
   "extensions": {
     "store/pixel/fbq": {
-      "component": "index"
+      "component": "index",
+      "shouldRender": false
     }
   }
 }
