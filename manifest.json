@@ -6,7 +6,6 @@
   "description": "Facebook Pixel",
   "defaultLocale": "pt-BR",
   "builders": {
-    "pages": "0.x",
     "react": "2.x"
   },
   "mustUpdateAt": "2019-10-01",
@@ -22,7 +21,7 @@
     "free": true
   },
   "dependencies": {
-    "vtex.store": "1.x"
+    "vtex.pixel-manager": "0.x"
   },
   "settingsSchema": {
     "title": "Facebook Pixel",
