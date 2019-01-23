@@ -46,6 +46,21 @@ window.addEventListener('message', e => {
       })
       break
     }
+    case 'vtex:addToCart': {
+      const { items }: { items: any[] } = e.data
+
+      fbq('track', 'AddToCart', {
+        content_ids: items.map(sku => sku.skuId),
+        contents: items.map(sku => ({
+          id: sku.skuId,
+          quantity: sku.quantity,
+          item_price: sku.price,
+        })),
+        content_type: 'product',
+        currency: e.data.currency,
+      })
+      break
+    }
     default:
       break
   }
