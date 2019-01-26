@@ -1,8 +1,11 @@
 {
   "name": "vtex.facebook-pixel",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "dependencies": {
     "ramda": "^0.25.0"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit --pretty && tslint -c tslint.json './**/*.ts'"
   },
   "devDependencies": {
     "@types/node": "^10.12.18",

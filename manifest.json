@@ -6,13 +6,9 @@
   "description": "Facebook Pixel",
   "defaultLocale": "pt-BR",
   "builders": {
-    "react": "2.x"
+    "react": "3.x"
   },
   "mustUpdateAt": "2019-10-01",
-  "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
   "billingOptions": {
     "termsURL": "",
     "support": {
@@ -35,6 +31,7 @@
     }
   },
   "scripts": {
+    "prereleasy": "bash lint.sh",
     "postreleasy": "vtex publish --verbose"
   }
 }
