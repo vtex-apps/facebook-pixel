@@ -1,142 +1,67 @@
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import { Helmet, withRuntimeContext } from 'render'
-import { Pixel } from 'vtex.store/PixelContext'
-
-import { fbjs, noScript } from './scripts/fbjs'
 import { formatSearchResultProducts, getProductPrice } from './utils/formatHelper'
 
-const APP_LOCATOR = 'vtex.facebook-pixel'
+import pixelScript from './scripts/fbq'
 
-interface Props {
-  subscribe: (s: any) => () => void
-  runtime: {
-    workspace: string
-    account: string
-    culture: {
-      currency: string
-    }
-  }
+const pixelId = window.__SETTINGS__.pixelId
+
+if (!pixelId) {
+  throw new Error('Warning: No FB Pixel ID is defined. To setup the app, take a look at your admin')
 }
 
-/**
- * Component that encapsulates the communication
- * with the Facebook Pixel API, and listens for the
- * events emitted by the store through the Pixel HOC.
- */
-class FacebookPixel extends Component<Props> {
-  public static propTypes = {
-    runtime: PropTypes.shape({
-      account: PropTypes.string,
-      culture: PropTypes.shape({
-        currency: PropTypes.string,
-      }),
-      workspace: PropTypes.string,
-    }),
-    subscribe: PropTypes.func,
-  }
+// tslint:disable-next-line no-eval
+eval(pixelScript(window.__SETTINGS__.pixelId))
 
-  public static contextTypes = {
-    getSettings: PropTypes.func.isRequired,
-  }
+const trackCategoryPage = (page: string, e: Event) =>
+  fbq('track', 'ViewContent', {
+    ...formatSearchResultProducts(e.data.products),
+    content_category: page,
+    content_type: 'product_group',
+    currency: e.data.currency,
+  })
 
-  private unsubscribe: () => void
-
-  constructor(props: Props) {
-    super(props)
-    this.unsubscribe = props.subscribe(this)
-  }
-
-  public track = (eventName: string, data: any) => {
-    if (typeof fbq === 'undefined') {
-      return
+window.addEventListener('message', e => {
+  switch (e.data.eventName) {
+    case 'vtex:categoryView': {
+      trackCategoryPage('category', e)
+      break
     }
-
-    fbq('track', eventName, data)
-  }
-
-  public shouldComponentUpdate() {
-    // the component should only be rendered once
-    return false
-  }
-
-  public componentWillUnmount() {
-    if (this.unsubscribe) {
-      this.unsubscribe()
+    case 'vtex:departmentView': {
+      trackCategoryPage('department', e)
+      break
     }
-  }
-
-  get pixelId() {
-    const { pixelId } = this.context.getSettings(APP_LOCATOR) || { pixelId: undefined }
-
-    return pixelId
-  }
-
-  get currency() {
-    return this.props.runtime.culture.currency
-  }
-
-  public componentDidMount() {
-    if (!this.pixelId) {
-      const { runtime: { workspace, account } } = this.props
-      console.warn(
-        `Warning: No FB Pixel ID is defined. To setup the app, take a look at https://${workspace}--${account}.myvtex.com/admin/apps/`
-      )
+    case 'vtex:internalSiteSearchView': {
+      fbq('track', 'Search', formatSearchResultProducts(e.data.products))
+      break
     }
-  }
+    case 'vtex:productView': {
+      const { product: { productName, productId } } = e.data
 
-  public trackCategoryPage(page: string) {
-    return (data: any) => {
-      this.track('ViewContent', {
-        ...formatSearchResultProducts(data.products),
-        content_category: page,
-        content_type: 'product_group',
-        currency: this.currency,
+      fbq('track', 'ViewContent', {
+        content_category: 'product',
+        content_ids: [productId],
+        content_name: name,
+        content_type: 'product',
+        currency: e.data.currency,
+        value: getProductPrice(e.data.product),
       })
+      break
     }
-  }
+    case 'vtex:addToCart': {
+      const { items }: { items: any[] } = e.data
 
-  /* tslint:disable member-ordering */
-  public departmentView = this.trackCategoryPage('department')
-
-  public categoryView = this.trackCategoryPage('category')
-  /* tslint:enable member-ordering */
-
-  public internalSiteSearchView = (data: any) => {
-    this.track('Search', formatSearchResultProducts(data.products))
-  }
-
-  public productView = (data: any) => {
-    const { product: { productName, productId } } = data
-
-    this.track('ViewContent', {
-      content_category: 'product',
-      content_ids: [productId],
-      content_name: name,
-      content_type: 'product',
-      currency: this.currency,
-      value: getProductPrice(data.product),
-    })
-  }
-
-  public render() {
-    const pixelId = this.pixelId
-
-    if (!pixelId) {
-      return null
+      fbq('track', 'AddToCart', {
+        content_ids: items.map(sku => sku.skuId),
+        contents: items.map(sku => ({
+          id: sku.skuId,
+          quantity: sku.quantity,
+          item_price: sku.price,
+        })),
+        content_type: 'product',
+        currency: e.data.currency,
+      })
+      break
     }
-
-    const scripts = [{
-      innerHTML: fbjs(pixelId),
-      type: 'application/javascript',
-    }]
-    const noScripts = [{
-      id: 'fbjs_frame',
-      innerHTML: noScript(pixelId),
-    }]
-
-    return <Helmet script={scripts} noscript={noScripts} />
+    default:
+      break
   }
-}
-
-export default Pixel(withRuntimeContext(FacebookPixel))
+})
