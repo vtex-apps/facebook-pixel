@@ -19,6 +19,11 @@
   "dependencies": {
     "vtex.pixel-manager": "0.x"
   },
+  "policies": [
+    {
+      "name": "pixel"
+    }
+  ],
   "settingsSchema": {
     "title": "Facebook Pixel",
     "type": "object",
