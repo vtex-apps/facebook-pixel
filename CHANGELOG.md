@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **BREAKING** Update to new pixel builder.
+
+### Removed
+
+- ViewContent events from department and category.
+- Search event.
+
+### Fixed
+
+- Product ViewContent event parameters.
+- Missing param `value` of AddToCart event.
+- Trigger of PageView event.
+
 ## [1.2.0] - 2019-03-18
 ### Added
 - Add `pixel` policy.
