@@ -1,4 +1,4 @@
-# facebook-pixel - Deprecated (We will not maintain this app as firsty-party)
+# facebook-pixel
 
 VTEX Facebook Pixel first-party app
 

@@ -6,7 +6,9 @@
   "description": "Facebook Pixel",
   "defaultLocale": "pt-BR",
   "builders": {
-    "react": "3.x"
+    "react": "3.x",
+    "store": "0.x",
+    "pixel": "0.x"
   },
   "mustUpdateAt": "2019-10-01",
   "billingOptions": {
@@ -17,13 +19,8 @@
     "free": true
   },
   "dependencies": {
-    "vtex.pixel-manager": "0.x"
+    "vtex.pixel-interfaces": "1.x"
   },
-  "policies": [
-    {
-      "name": "pixel"
-    }
-  ],
   "settingsSchema": {
     "title": "Facebook Pixel",
     "type": "object",
@@ -38,5 +35,6 @@
   "scripts": {
     "prereleasy": "bash lint.sh",
     "postreleasy": "vtex publish --verbose"
-  }
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

@@ -1,55 +1,46 @@
-import { formatSearchResultProducts, getProductPrice } from './utils/formatHelper'
+import { getProductPrice } from './utils/formatHelper'
+import { ProductOrder, PixelMessage } from './typings/events'
 
-import pixelScript from './scripts/fbq'
-
-const pixelId = window.__SETTINGS__.pixelId
-
-if (!pixelId) {
-  throw new Error('Warning: No FB Pixel ID is defined. To setup the app, take a look at your admin')
-}
-
-// tslint:disable-next-line no-eval
-eval(pixelScript(window.__SETTINGS__.pixelId))
-
-const trackCategoryPage = (page: string, e: Event) =>
-  fbq('track', 'ViewContent', {
-    ...formatSearchResultProducts(e.data.products),
-    content_category: page,
-    content_type: 'product_group',
-    currency: e.data.currency,
-  })
-
-window.addEventListener('message', e => {
+window.addEventListener('message', (e : PixelMessage) => {
   switch (e.data.eventName) {
-    case 'vtex:categoryView': {
-      trackCategoryPage('category', e)
+    case 'vtex:pageView': {
+      fbq('track', 'PageView')
       break
     }
-    case 'vtex:departmentView': {
-      trackCategoryPage('department', e)
-      break
-    }
-    case 'vtex:internalSiteSearchView': {
-      fbq('track', 'Search', formatSearchResultProducts(e.data.products))
+    case 'vtex:orderPlaced': {
+      const { currency, transactionTotal, transactionProducts } = e.data
+
+      fbq('track', 'Purchase', {
+        value: transactionTotal,
+        currency,
+        content_type: 'product',
+        contents: transactionProducts.map(
+          (product: ProductOrder) => ({
+            id: product.sku,
+            quantity: product.quantity,
+            item_price: product.sellingPrice
+          })
+        )
+      });
       break
     }
     case 'vtex:productView': {
-      const { product: { productName, productId } } = e.data
+      const { product: { productId, productName }, currency } = e.data
 
       fbq('track', 'ViewContent', {
-        content_category: 'product',
         content_ids: [productId],
-        content_name: name,
+        content_name: productName,
         content_type: 'product',
-        currency: e.data.currency,
+        currency,
         value: getProductPrice(e.data.product),
       })
       break
     }
     case 'vtex:addToCart': {
-      const { items }: { items: any[] } = e.data
+      const { items, currency } = e.data
 
       fbq('track', 'AddToCart', {
+        value: items.reduce((acc, item) => acc + item.price, 0),
         content_ids: items.map(sku => sku.skuId),
         contents: items.map(sku => ({
           id: sku.skuId,
@@ -57,7 +48,7 @@ window.addEventListener('message', e => {
           item_price: sku.price,
         })),
         content_type: 'product',
-        currency: e.data.currency,
+        currency: currency,
       })
       break
     }
