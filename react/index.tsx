@@ -1,7 +1,8 @@
 import { getProductPrice } from './utils/formatHelper'
 import { ProductOrder, PixelMessage } from './typings/events'
+import { canUseDOM } from 'vtex.render-runtime'
 
-window.addEventListener('message', (e : PixelMessage) => {
+function handleMessages(e: PixelMessage) {
   switch (e.data.eventName) {
     case 'vtex:pageView': {
       fbq('track', 'PageView')
@@ -55,4 +56,8 @@ window.addEventListener('message', (e : PixelMessage) => {
     default:
       break
   }
-})
+}
+
+if (canUseDOM) {
+  window.addEventListener('message', handleMessages)
+}
