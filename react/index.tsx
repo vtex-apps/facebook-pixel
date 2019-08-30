@@ -26,10 +26,10 @@ function handleMessages(e: PixelMessage) {
       break
     }
     case 'vtex:productView': {
-      const { product: { productId, productName }, currency } = e.data
+      const { product: { productName, items }, currency } = e.data
 
       fbq('track', 'ViewContent', {
-        content_ids: [productId],
+        content_ids: items.map(({ itemId }) => itemId),
         content_name: productName,
         content_type: 'product',
         currency,
