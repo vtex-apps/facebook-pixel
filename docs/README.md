@@ -1,4 +1,4 @@
-# facebook-pixel
+# Facebook
 
 VTEX Facebook Pixel first-party app
 
