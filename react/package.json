@@ -1,6 +1,6 @@
 {
   "name": "vtex.facebook-pixel",
-  "version": "1.0.0",
+  "version": "2.0.4",
   "dependencies": {
     "ramda": "^0.25.0"
   },
