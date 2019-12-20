@@ -12,8 +12,8 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      var plat = window.__RUNTIME__.platform == 'vtex' ? 'plvtex': 'plgocommerce';
-      fbq('init',pixelId,{},{'agent':plat});
+      var platform = window.__RUNTIME__.platform == 'vtex' ? 'plvtex': 'plgocommerce';
+      fbq('init', pixelId, {}, {"agent": platform});
     }
   })()
 </script>
