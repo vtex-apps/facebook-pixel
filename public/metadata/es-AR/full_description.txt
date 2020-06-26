@@ -1,20 +1,20 @@
 ## Sobre
+
 Esta aplicación le permite conectar su tienda a los servicios de publicidad de Facebook.
 Podrá crear anuncios y administrar campañas en tiempo real a través de una cuenta de Facebook "Administrador de anuncios".
 
 ## Funcionalidades
+
 - Crear anuncios que aparecerán en las aplicaciones y servicios de Facebook, incluido Instagram;
-
 - Editar anuncios, público objetivo y horarios;
-
 - Ver el rendimiento de sus anuncios en tiempo real.
 
 ## Cómo configurar
+
 1 - Instala la aplicación desde VTEX App Store;
-
 2 - Agregue su Facebook Pixel ID. Puede obtener este valor en [Ads Manager Account] (https://www.facebook.com/ads/manager);
-
 3 - Guarda tus cambios.
 
 ## Comentarios
+
 - Para gestión de anuncios, debe tener una cuenta de Facebook "Ads Manager".
