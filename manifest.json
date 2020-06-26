@@ -3,7 +3,7 @@
   "name": "facebook-pixel",
   "version": "2.1.0",
   "title": "Facebook Pixel",
-  "description": "Facebook Pixel",
+  "description": "Integrate with Facebook advertising tools.",
   "defaultLocale": "pt-BR",
   "builders": {
     "react": "3.x",
@@ -13,7 +13,7 @@
   },
   "mustUpdateAt": "2019-10-01",
   "billingOptions": {
-    "termsURL": "",
+    "termsURL": "https://compliance.vtex.com/gdpr/policies/vtex-privacy-policy",
     "support": {
       "url": "https://support.vtex.com/hc/requests"
     },
