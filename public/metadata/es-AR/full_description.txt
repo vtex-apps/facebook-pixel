@@ -1,14 +1,20 @@
 ## Sobre
 
-Facebook Píxel es una aplicación para el seguimiento de las actividades de los visitantes a su comercio electrónico. Herramienta utilizada para evaluar la eficiencia de sus anuncios.
-Para ver todos los lanzamientos, [acesse o changelog](https://github.com/vtex-apps/facebook-pixel/blob/master/CHANGELOG.md)
+Esta aplicación le permite conectar su tienda a los servicios de publicidad de Facebook.
+Podrá crear anuncios y administrar campañas en tiempo real a través de una cuenta de Facebook "Administrador de anuncios".
 
 ## Funcionalidades
 
-- Integración de su tienda VTEX a Facebook Analytics.
-- Una nueva forma de analizar su público.
+- Crear anuncios que aparecerán en las aplicaciones y servicios de Facebook, incluido Instagram;
+- Editar anuncios, público objetivo y horarios;
+- Ver el rendimiento de sus anuncios en tiempo real.
 
-## Cómo configurar 
+## Cómo configurar
 
-Sólo la configuración necesaria será agregar el Facebook App ID en su cuenta. En el Admin, acceda a Apps -> Facebook píxel y añada el ID en el campo disponible.
-Obtenga más información acerca de app [en el Github readme.](https://github.com/vtex-apps/facebook-pixel/blob/master/README.md)
+1 - Instala la aplicación desde VTEX App Store;
+2 - Agregue su Facebook Pixel ID. Puede obtener este valor en [Ads Manager Account] (https://www.facebook.com/ads/manager);
+3 - Guarda tus cambios.
+
+## Comentarios
+
+- Para gestión de anuncios, debe tener una cuenta de Facebook "Ads Manager".

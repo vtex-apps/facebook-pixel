@@ -1,14 +1,20 @@
 ## About
 
-Facebook Pixel is an app for tracking the activities of visitors to your ecommerce. Tool used to evaluate the effectiveness of your ads.
-To see all the releases, [access the changelog](https://github.com/vtex-apps/facebook-pixel/blob/master/CHANGELOG.md)
+This application allows you to connect your store to the Facebook ad services.
+You will be able to create ads and manage campaigns in real time through a Facebook "Ads Manager" account.
 
-## Features 
+## Functionalities
 
-- Integration of your VTEX store with Facebook Analytics.
-- A new way to analyze your audience.
+- Create ads that will appear on Facebook applications and services, including Instagram;
+- Edit ads, target audience and schedules;
+- View the performance of your ads in real time.
 
-## How to configure
+## How to set up
 
-The required configuration will be to add the Facebook App ID into your account. In the Admin, go to **Apps -> Facebook Pixel** and add the ID in the available field.
-Learn more about the app [on the Github README.](https://github.com/vtex-apps/facebook-pixel/blob/master/README.md)
+1 - Install the app from VTEX App Store;
+2 - Add your Facebook Pixel ID. You can get this value from the [Ads Manager Account] (https://www.facebook.com/ads/manager);
+3 - Save your changes.
+
+## Comments
+
+- For the management of ads, you must have a "Ads Manager" Facebook account.
