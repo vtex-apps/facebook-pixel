@@ -17,4 +17,4 @@ You will be able to create ads and manage campaigns in real time through a Faceb
 
 ## Comments
 
-- For the management of ads, you must have a "Ads Manager" Facebook account.
+- For the management of ads, you must have an "Ads Manager" Facebook account.
