@@ -1,6 +1,6 @@
 ## Sobre
 
-Este aplicativo permite conectar a sua loja aos serviçoes de anúncios do Facebook.
+Este aplicativo permite conectar a sua loja aos serviços de anúncios do Facebook.
 Você poderá criar anúncios e gerenciar as campanhas em tempo real através de uma conta "Ads Manager" do Facebook.
 
 ## Funcionalidades
