@@ -12,7 +12,9 @@ You will be able to create ads and manage campaigns in real time through a Faceb
 ## How to set up
 
 1 - Install the app from VTEX App Store;
-2 - Add your Facebook Pixel ID. You can get this value from the [Ads Manager Account] (https://www.facebook.com/ads/manager);
+
+2 - Add your Facebook Pixel ID. You can get this value from the [Ads Manager Account](https://www.facebook.com/ads/manager);
+
 3 - Save your changes.
 
 ## Comments
