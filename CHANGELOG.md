@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
-- Move script to head
+- Move script to head.
+- Change script to be parseable by Facebook Pixel Helper Chrome Extension.
 
 ## [2.1.4] - 2020-06-29
 ### Fixed
