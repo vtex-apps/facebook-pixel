@@ -17,7 +17,9 @@
     "support": {
       "url": "https://support.vtex.com/hc/requests"
     },
-    "free": true
+    "free": true,
+    "type": "free",
+    "availableCountries": ["*"]
   },
   "dependencies": {
     "vtex.pixel-interfaces": "1.x"
