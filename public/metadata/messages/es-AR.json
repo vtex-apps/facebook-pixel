@@ -1,0 +1,15 @@
+{
+  "name": "Facebook Pixel",
+  "headline": "Integre con las herramientas de publicidad de Facebook.",
+  "overview": "Esta aplicación le permite conectar su tienda a los servicios de publicidad de Facebook.\nPodrá crear anuncios y administrar campañas en tiempo real a través de una cuenta de Facebook \"Administrador de anuncios\".",
+  "features": [
+    "Crear anuncios que aparecerán en las aplicaciones y servicios de Facebook, incluido Instagram",
+    "Editar anuncios, público objetivo y horarios",
+    "Ver el rendimiento de sus anuncios en tiempo real"
+  ],
+  "additionalInformation": "Para gestión de anuncios, debe tener una cuenta de Facebook \"Ads Manager\".",
+  "websiteURL": "https://vtex.com/",
+  "support": {
+    "url": "https://support.vtex.com/hc/requests"
+  }
+}

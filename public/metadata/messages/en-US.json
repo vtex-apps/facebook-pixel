@@ -1,0 +1,15 @@
+{
+  "name": "Facebook Pixel",
+  "headline": "Integrate with Facebook advertising tools.",
+  "overview": "This application allows you to connect your store to the Facebook ad services.\nYou will be able to create ads and manage campaigns in real time through a Facebook \"Ads Manager\" account.",
+  "features": [
+    "Create ads that will appear on Facebook applications and services, including Instagram",
+    "Edit ads, target audience and schedules",
+    "View the performance of your ads in real time"
+  ],
+  "additionalInformation": "For the management of ads, you must have an \"Ads Manager\" Facebook account.",
+  "websiteURL": "https://vtex.com/",
+  "support": {
+    "url": "https://support.vtex.com/hc/requests"
+  }
+}
