@@ -1,10 +1,10 @@
 ---
 files:
   -
-    source: "public/metadata/messages/pt-BR.json"
-    translation: "public/metadata/messages/%locale%.json"
+    source: "/public/metadata/messages/pt-BR.json"
+    translation: "/public/metadata/messages/%locale%.json"
     type: "json"
   -
-    source: "public/metadata/licenses/pt-BR.md"
-    translation: "public/metadata/licenses/%locale%.md"
+    source: "/public/metadata/licenses/pt-BR.md"
+    translation: "/public/metadata/licenses/%locale%.md"
     type: "md"
