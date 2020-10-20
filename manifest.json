@@ -29,6 +29,7 @@
   "settingsSchema": {
     "title": "Facebook Pixel",
     "type": "object",
+    "bindingBounded": true,
     "properties": {
       "pixelId": {
         "title": "Facebook Pixel ID",
