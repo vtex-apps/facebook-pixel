@@ -1,5 +1,4 @@
-import { getProductPrice } from './utils/formatHelper'
-import { ProductOrder, PixelMessage } from './typings/events'
+import { ProductOrder, PixelMessage, Product } from './typings/events'
 import { canUseDOM } from 'vtex.render-runtime'
 
 function handleMessages(e: PixelMessage) {
@@ -41,12 +40,12 @@ function handleMessages(e: PixelMessage) {
       const { items, currency } = e.data
 
       fbq('track', 'AddToCart', {
-        value: items.reduce((acc, item) => acc + item.price, 0),
+        value: items.reduce((acc, item) => acc + item.price, 0) / 100,
         content_ids: items.map(sku => sku.skuId),
         contents: items.map(sku => ({
           id: sku.skuId,
           quantity: sku.quantity,
-          item_price: sku.price,
+          item_price: sku.price / 100,
         })),
         content_type: 'product',
         currency: currency,
@@ -57,6 +56,17 @@ function handleMessages(e: PixelMessage) {
       break
   }
 }
+
+function getProductPrice(product: Product) {
+  let price
+  try {
+    price = product.items[0].sellers[0].commertialOffer.Price
+  } catch {
+    price = undefined
+  }
+  return price
+}
+
 
 if (canUseDOM) {
   window.addEventListener('message', handleMessages)
