@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Vary product details page event `content_type` if product has more than one SKU.
+
 ## [2.2.1] - 2020-10-27
 ### Fixed
 - Currency values in AddToCart event.
