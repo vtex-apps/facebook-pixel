@@ -25,12 +25,26 @@ function handleMessages(e: PixelMessage) {
       break
     }
     case 'vtex:productView': {
-      const { product: { productName, items }, currency } = e.data
+      const { product: { productName, productId, items }, currency } = e.data
+
+      // The event varies if the product has SKUs, see:
+      // https://developers.facebook.com/docs/marketing-api/audiences/guides/dynamic-product-audiences#
+      const noVariants = items.length === 1
+      if (noVariants) {
+        fbq('track', 'ViewContent', {
+          content_ids: [items[0].itemId],
+          content_name: productName,
+          content_type: 'product',
+          currency,
+          value: getProductPrice(e.data.product),
+        })
+        return
+      }
 
       fbq('track', 'ViewContent', {
-        content_ids: items.map(({ itemId }) => itemId),
+        content_ids: [productId],
         content_name: productName,
-        content_type: 'product',
+        content_type: 'product_group',
         currency,
         value: getProductPrice(e.data.product),
       })
