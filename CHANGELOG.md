@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.2] - 2021-10-28
+
 ### Changed
 - documentation structure and the name **toolbelt** to **VTEX IO CLI.**
 ## [2.2.1] - 2020-10-27
