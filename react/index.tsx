@@ -8,13 +8,13 @@ function handleMessages(e: PixelMessage) {
       break
     }
     case 'vtex:orderPlaced': {
-      const { currency, transactionTotal, transactionProducts, transactionId } = e.data
+      const { currency, transactionTotal, transactionProducts, orderGroup } = e.data
 
       fbq('track', 'Purchase', {
         value: transactionTotal,
         currency,
         content_type: 'product',
-        eventID: transactionId,
+        eventID: orderGroup,
         contents: transactionProducts.map(
           (product: ProductOrder) => ({
             id: product.sku,
