@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Reintegrate the pixel script setting autoConfig to false, to avoid conflicts.
+
 ## [2.2.4] - 2026-04-10
 
 - Temporarily removed the pixel script
